@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jessie D. Enlangan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .resume-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            min-height: calc(100vh - 40px);
+        }
+
+        .sidebar {
+            background: #2d3748;
+            color: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-image {
+            margin-bottom: 20px;
+        }
+
+        .profile-image img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .profile-info h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .profile-info .title {
+            font-size: 0.9rem;
+            color: #a0aec0;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .contact-section {
+            margin-bottom: 40px;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .contact-item span,
+        .contact-item a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .contact-item a:hover {
+            color: #667eea;
+        }
+
+        .skills-sidebar {
+            margin-bottom: 30px;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            color: #e2e8f0;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: #4a5568;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 3px;
+            transition: width 2s ease;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow-y: auto;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .summary-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .position {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .date-badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .description {
+            color: #4a5568;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .description ul {
+            padding-left: 18px;
+            margin-top: 10px;
+        }
+
+        .description li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .description li::marker {
+            color: #667eea;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.15);
+        }
+
+        .skill-category-card h3 {
+            color: #2d3748;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .skill-category-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 1px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: white;
+            color: #4a5568;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            border-color: #667eea;
+            color: #667eea;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .resume-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                min-height: auto;
+            }
+            
+            .sidebar {
+                padding: 30px 20px;
+                order: 2;
+            }
+            
+            .main-content {
+                padding: 30px 20px;
+                order: 1;
+            }
+            
+            .profile-info h1 {
+                font-size: 1.5rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                display: block;
+                max-width: none;
+            }
+            
+            .sidebar {
+                background: #f8f9fa;
+                color: #2d3748;
+                margin-bottom: 20px;
+            }
+            
+            .main-content {
+                box-shadow: none;
+            }
+        }
+
+        /* Animation for skill bars */
+        @keyframes fillSkill {
+            from { width: 0; }
+            to { width: var(--skill-width); }
+        }
+
+        .skill-progress {
+            animation: fillSkill 2s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="sidebar">
+            <div class="profile-section">
+                <div class="profile-image">
+                    <img src="PP.jpg" alt="Jessie D. Enlangan" />
+                </div>
+                <div class="profile-info">
+                    <h1>Jessie D. Enlangan</h1>
+                    <p class="title">Front-End Developer | Video/Photo Editor </p>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <h3 class="sidebar-title">Contact</h3>
+                <div class="contact-item">
+                    <i class="fa-brands fa-google"></i>
+                    <span>jessie.enlangan@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>09959600253</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-brands fa-github"></i>
+                    <a href="https://github.com/settings/profile">Jessie Enlangan</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-brands fa-facebook"></i>
+                    <a href="https://www.facebook.com/Jessiede04">Jessie De</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-brands fa-instagram"></i>
+                    <a href="https://www.instagram.com/totojessiede/">TotoJessieDe</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Bacolod City</span>
+                </div>
+            </div>
+
+            <div class="skills-sidebar">
+                <h3 class="sidebar-title">Top Skills</h3>
+                <div class="skill-item">
+                    <div class="skill-name">Frontend Development</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--skill-width: 90%; width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Video/Photo Editing</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--skill-width: 95%; width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Adobe Creative Suite</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="--skill-width: 92%; width: 92%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <div class="summary-card">
+                    Creative and versatile Front-End Developer with expertise in video/photography. Experienced freelancer with 6+ years in visual content creation and digital media production. Passionate about creating engaging user experiences and high-quality visual content that drives results and exceeds client expectations.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Professional Experience</h2>
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="position">Freelance Video/Photo Editor</div>
+                            <div class="company">Self-Employed</div>
+                        </div>
+                        <div class="date-badge">2018 - Present</div>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li>Produced high-quality video content for various clients including promotional videos, event coverage, and social media content</li>
+                            <li>Edited photos and videos using Adobe Creative Suite (Premiere Pro, Photoshop, Lightroom)</li>
+                            <li>Collaborated with clients to understand their vision and deliver customized visual solutions</li>
+                            <li>Managed multiple projects simultaneously while meeting tight deadlines</li>
+                            <li>Built strong client relationships resulting in repeat business and referrals</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Core Competencies</h2>
+                <div class="skills-grid">
+                    <div class="skill-category-card">
+                        <h3>Frontend Development</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Bootstrap</span>
+                            <span class="skill-tag">Responsive Design</span>
+                        </div>
+                    </div>
+                    <div class="skill-category-card">
+                        <h3>Video/Photo Editing</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Adobe Premiere Pro</span>
+                            <span class="skill-tag">Photoshop</span>
+                            <span class="skill-tag">Lightroom</span>
+                            <span class="skill-tag">Canva</span>
+                        </div>
+                    </div>
+                    <div class="skill-category-card">
+                        <h3>Tools & Equipment</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Mirrorless Camera</span>
+                            <span class="skill-tag">Video Production</span>
+                            <span class="skill-tag">Git/GitHub</span>
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag">Content Creation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="position">OneSched</div>
+                            <div class="company">Capstone Project</div>
+                        </div>
+                        <div class="date-badge">2025</div>
+                    </div>
+                    <div class="description">
+                        This system aims to improve the management and allocation of campus facilities, transitioning from a manual booking process to an efficient and convenient, automated solution that benefits the Physical Plant Management Office (PPMO), students, faculty, and staff.
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="position">Bachelor of Science in Information Technology</div>
+                            <div class="company">STI West Negros University</div>
+                        </div>
+                        <div class="date-badge">2025 - 2026</div>
+                    </div>
+                    <div class="description">
+                        Currently pursuing degree in Information Technology with focus on web development, database management, and software engineering principles. Relevant coursework includes programming fundamentals, web technologies, and digital media production.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
